@@ -1,8 +1,13 @@
+<header>
+    <input (keyup)="onKey($event)" id="search-bar" type="text" placeholder="Search..">
+</header>
 <div class="container">
+    
     <ng-container *ngIf="!(produtos$ | async); else products">
         <mat-spinner />
     </ng-container>
     <ng-template #products>
+        
         <mat-card class="card" *ngFor="let produto of produtos$ | async" class="card">
             <mat-card-header>
                 <mat-card-subtitle>{{produto.category}}</mat-card-subtitle>

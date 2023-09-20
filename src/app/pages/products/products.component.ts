@@ -15,10 +15,14 @@ import { ProductsService } from 'src/app/core/services/products.service';
     MatProgressSpinnerModule,
   ],
   templateUrl: './products.component.html',
-  styleUrls: ['./products.component.scss']
+  styleUrls: ['./products.component.scss'],
+
 })
 export class ProductsComponent {
   produtos$ = this.productsService.getProducts();
+  itemName: string = '';
+  foundItem: any = null;
+  searchPerformed: boolean = false;
 
   constructor(
     public productsService: ProductsService,
@@ -32,5 +36,12 @@ export class ProductsComponent {
   movePreviousPage() {
     this.productsService.goToPreviousPage();
     this.produtos$ = this.productsService.getProducts();
+  }
+
+  onKey(event:any) {
+    const inputValue = event.target.value;
+    this.productsService.searchValue = inputValue;
+    this.produtos$ = this.productsService.getProducts();
+    console.log(inputValue);
   }
 }
