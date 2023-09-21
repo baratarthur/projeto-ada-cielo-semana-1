@@ -3,7 +3,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Page } from '../models/page';
 
-interface Product {
+export interface Product {
   id: string
   name: string
   avatar: string

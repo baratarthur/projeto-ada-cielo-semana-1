@@ -3,7 +3,9 @@ import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { ProductsService } from 'src/app/core/services/products.service';
+import { Product, ProductsService } from 'src/app/core/services/products.service';
+import { MatDialog } from '@angular/material/dialog';
+import { ProdutcsFormDialogComponent } from '../../shared/produtcs-form-dialog/produtcs-form-dialog.component';
 
 @Component({
   selector: 'app-products',
@@ -22,6 +24,7 @@ export class ProductsComponent {
 
   constructor(
     public productsService: ProductsService,
+    public dialog: MatDialog,
   ) {}
 
   moveNextPage() {
@@ -32,5 +35,17 @@ export class ProductsComponent {
   movePreviousPage() {
     this.productsService.goToPreviousPage();
     this.produtos$ = this.productsService.getProducts();
+  }
+
+  //Abre Modal
+  openDialog(produto:Product): void {
+    const dialogRef = this.dialog.open(ProdutcsFormDialogComponent, {
+      width: '720px',
+      data: produto
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
   }
 }

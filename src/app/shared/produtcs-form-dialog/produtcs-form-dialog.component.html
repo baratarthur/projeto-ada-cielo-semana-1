@@ -1,0 +1,16 @@
+<div style="background-color: aliceblue; width: 700px; margin:10px 10px 10px 10px;">
+  <h1 mat-dialog-title style="color: darkcyan;">{{data.name}}</h1>
+  <div mat-dialog-content style="float: left;">
+    <img mat-card-image [src]="data.avatar" [alt]="data.name" loading="lazy" width="180px" style="float: left;">
+  </div>
+    <div style="padding-bottom: 10px;">
+      <p style="color: darkcyan;">{{data.description}}</p>
+      <p style="color: darkcyan;">{{data.price}}</p>
+      <p style="color: darkcyan;">{{data.rating}}</p>
+      <p style="color: darkcyan;">{{data.category}}</p>
+    </div>
+  </div>
+<div mat-dialog-actions>
+  <button mat-button (click)="cancel()">No Thanks</button>
+  <button mat-button [mat-dialog-close]="data.avatar" cdkFocusInitial>Ok</button>
+</div>
