@@ -44,5 +44,5 @@ export class ProductsService {
       this.page.value--;
     }
   }
-
+  
 }

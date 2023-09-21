@@ -1,8 +1,10 @@
-<header>
-    <input (keyup)="onKey($event)" id="search-bar" type="text" placeholder="Search..">
-</header>
-<div class="container">
-    
+<div class="header">
+    <h1>City Market</h1>
+    <input [(ngModel)]="itemName" id="search-bar" type="text" placeholder="Search...">
+    <button (click)="inputValue()" id="search-button" type="button" mat-raised-button>Click Me!</button> 
+</div>
+
+<div class="container">   
     <ng-container *ngIf="!(produtos$ | async); else products">
         <mat-spinner />
     </ng-container>
