@@ -20,12 +20,14 @@ export class ProductsService {
   private http: HttpClient = inject(HttpClient);
   url: string = 'http://localhost:3000/products';
   page: Page = new Page();
+  searchValue: string = '';
 
   getProducts(): Observable<Product[]> {
     const params = new HttpParams()
       .set('pageSize', this.page.size)
+      .set('search', this.searchValue)
       .set('pageNumber', this.page.value);
-
+      
     return this.http.get<Product[]>(this.url, {params});
   }
 
@@ -42,4 +44,5 @@ export class ProductsService {
       this.page.value--;
     }
   }
+  
 }
