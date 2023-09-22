@@ -1,3 +1,6 @@
+<header>
+    <div [matBadge]="itemCarrinho" matBadgeSize="large" class="demo-section">Carrinho</div>
+</header>
 <div class="container">
     <ng-container *ngIf="!(produtos$ | async); else products">
         <mat-spinner />
@@ -8,7 +11,8 @@
                 <mat-card-subtitle>{{produto.category}}</mat-card-subtitle>
                 <mat-card-title>{{produto.name}}</mat-card-title>
             </mat-card-header>
-            <img mat-card-image [src]="produto.avatar" [alt]="produto.name" loading="lazy" (click)="openDialog(produto)">
+            <img mat-card-image [src]="produto.avatar" [alt]="produto.name" loading="lazy"
+                (click)="openDialog(produto)">
             <mat-card-content>
                 <p>{{produto.description}}</p>
                 <p>{{produto.price | currency: 'BRL'}}</p>
@@ -18,9 +22,7 @@
     </ng-template>
 </div>
 <div class="actions">
-    <button mat-raised-button
-        id="prev-button"
-        [disabled]="this.productsService.isFirstPage"
+    <button mat-raised-button id="prev-button" [disabled]="this.productsService.isFirstPage"
         (click)="movePreviousPage()">
         Prev
     </button>

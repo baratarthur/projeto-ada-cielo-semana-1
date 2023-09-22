@@ -5,6 +5,19 @@ import { ProductsService } from 'src/app/core/services/products.service';
 import { HttpClientModule } from '@angular/common/http';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+
+
+const routes: Routes = [
+  {path:'home', component: ProductsComponent}
+];
+
+@NgModule({
+    imports: [RouterModule.forRoot(routes)],
+    exports: [RouterModule]
+})
+export class AppRoutingModule { }
 
 const serviceMock = {
   getProducts: () => of([]),

@@ -35,3 +35,30 @@ mat-card-content, mat-card-header {
     padding: 1rem;
     gap: 1rem;
 }
+
+#search-bar {
+    padding: 6px;
+    width: 300px;
+    font: inherit;
+    float: center;
+    text-align:center;
+    display: flex;
+    margin:auto;
+
+}
+
+header {
+    display: flex;
+    font-family: sans-serif;
+    padding-top: 23px;
+}
+
+.matBadgeCart{
+    margin-top: 30px;
+}
+
+#mat-badge-content-0{
+    right: -27px;
+}
+
+
