@@ -1,0 +1,41 @@
+<mat-card>
+  <h2 class="mat-h2">Categories</h2>
+  <mat-selection-list #cat>
+      <mat-list-option *ngFor="let cat of productsService.categories"
+        color="primary"
+        [value]="cat">
+        <span class="mat-body">{{cat}}</span>
+      </mat-list-option>
+  </mat-selection-list>
+
+  <mat-divider />
+  
+  <h2 class="mat-h2">Rating</h2>
+  <mat-selection-list #rat>
+      <mat-list-option *ngFor="let rating of productsService.ratings"
+        color="primary"
+        [value]="rating">
+        <span class="mat-body">{{rating}}</span>
+      </mat-list-option>
+  </mat-selection-list>
+  
+  <mat-divider />
+
+  <h2 class="mat-h2">Price</h2>
+  <span>min: {{minPriceInput.value}}</span>
+  <span>max: {{maxPriceInput.value}}</span>
+  <form [formGroup]="form">
+    <mat-slider #slider
+      [min]="productsService.minPrice"
+      [max]="productsService.maxPrice">
+      <input #minPriceInput
+        matSliderStartThumb
+        [value]="productsService.minPrice"
+        formControlName="minValue">
+      <input #maxPriceInput
+        matSliderEndThumb
+        [value]="productsService.maxPrice"
+        formControlName="maxValue">
+    </mat-slider>
+  </form>
+</mat-card>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
@@ -12,14 +12,20 @@ import { MatDividerModule } from '@angular/material/divider';
 import { Product, ProductsService } from 'src/app/core/services/products.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ProdutcsFormDialogComponent } from '../../shared/produtcs-form-dialog/produtcs-form-dialog.component';
+import { SharedModule } from 'src/app/shared/shared.module';
+import { CoreModule } from 'src/app/core/core.module';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-products',
   standalone: true,
   imports: [
     CommonModule,
+    CoreModule,
+    SharedModule,
     MatCardModule,
     MatButtonModule,
+    MatInputModule,
     MatProgressSpinnerModule,
     FormsModule,
     MatFormFieldModule, 
@@ -34,33 +40,63 @@ import { ProdutcsFormDialogComponent } from '../../shared/produtcs-form-dialog/p
   styleUrls: ['./products.component.scss'],
 
 })
-
-export class ProductsComponent {
-  produtos$ = this.productsService.getProducts();
+export class ProductsComponent implements OnInit, OnDestroy {
+  private subscriptions: Subscription = new Subscription;
+  productsService: ProductsService = inject(ProductsService);
+  dialog: MatDialog = inject(MatDialog);
+  
+  produtos: Product[] = [];
+  produtosFiltrados: Product[] | undefined;
   itemName: string = '';
   foundItem: any = null;
   searchPerformed: boolean = false;
 
-  constructor(
-    public productsService: ProductsService,
-    public dialog: MatDialog,
-  ) {}
+  ngOnInit(): void {
+    this.subscriptions.add(
+      this.productsService.getProducts().subscribe({
+        next: (products) => {
+          this.produtos = products;
+        }
+      })
+    );
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.unsubscribe();
+  }
 
   moveNextPage() {
     this.productsService.goToNextPage();
-    this.produtos$ = this.productsService.getProducts();
+    this.subscriptions.add(
+      this.productsService.getProducts()
+        .subscribe({next: this.setProducts.bind(this)})
+    );
   }
 
   movePreviousPage() {
     this.productsService.goToPreviousPage();
-    this.produtos$ = this.productsService.getProducts();
+    this.subscriptions.add(
+      this.productsService.getProducts()
+        .subscribe({next: this.setProducts.bind(this)})
+    );
   }
-  
+
   inputValue() {
-    console.log('Valor do input:', this.itemName);
     this.productsService.searchValue = this.itemName;
-    this.produtos$ = this.productsService.getProducts();
     this.productsService.page.value = 1;
+    this.subscriptions.add(
+      this.productsService.getProducts()
+        .subscribe({next: this.setProducts.bind(this)})
+    );
+  }
+
+  private setProducts(products: Product[]): void {
+    this.produtos = products;
+    this.produtosFiltrados = this.productsService.filterProducts(products);
+  }
+
+  filterProducts(): void {
+    this.produtosFiltrados = this.productsService.filterProducts(this.produtos);
   }
 
   //Abre Modal
