@@ -25,6 +25,7 @@ import { Subscription } from 'rxjs';
     SharedModule,
     MatCardModule,
     MatButtonModule,
+    MatInputModule,
     MatProgressSpinnerModule,
     FormsModule,
     MatFormFieldModule, 

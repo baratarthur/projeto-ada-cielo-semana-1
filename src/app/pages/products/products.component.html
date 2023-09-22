@@ -1,8 +1,24 @@
 <article>
     <header>
-        <h1>City Market</h1>
-        <input [(ngModel)]="itemName" id="search-bar" type="text" placeholder="Search...">
-        <button (click)="inputValue()" id="search-button" type="button" mat-raised-button>Click Me!</button> 
+        <h1 class="mat-h1">City Market</h1>
+        <div class="busca">
+            <mat-form-field class="search">
+                <mat-label>Search...</mat-label>
+                <input matInput
+                    id="search-bar"
+                    type="text"
+                    [(ngModel)]="itemName">
+            </mat-form-field>
+            
+            <button mat-raised-button
+                id="search-button"
+                type="button"
+                color="primary"
+                (click)="inputValue()">
+                search
+            </button> 
+        </div>
+        <div class="carrinho"></div>
     </header>
     <section class="filters">
         <app-lateral-menu (onFilter)="filterProducts()"/>
@@ -14,6 +30,7 @@
             </ng-container>
             <ng-template #products>
                 <mat-card *ngFor="let produto of (produtosFiltrados?? produtos)"
+                    (click)="openDialog(produto)"
                     class="card">
                     <mat-card-header>
                         <mat-card-subtitle>{{produto.category}}</mat-card-subtitle>

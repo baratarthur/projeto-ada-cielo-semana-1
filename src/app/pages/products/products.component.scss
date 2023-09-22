@@ -36,61 +36,38 @@ mat-card-content, mat-card-header {
     gap: 1rem;
 }
 
-#search-bar {
-    float: center;
-    text-align:center;
-    padding: 5px;
-    display: flex;
-    margin: 1rem;
-    
-}
-
-#search-button {
-    display: inline-block;
-    clear: both;
-    text-align:center;
-    display: flex;
-    margin:1rem;
-}
-
-div {
-    display: flex;
-    align-items: center;
-    margin: auto;
-    
-}
-
-.header {
-   margin: auto;
-   width: 50%;
-   border: 3px solid rgb(2, 51, 2);
-   padding: 10px;
-   text-align: center;
-   align-items: center;
-   right: 0px;  
-   border-radius: 25px;
-}
-
-h1 {
-    display: block;
-    font-size: 2em;
-    margin-top: 0.67em;
-    margin-bottom: 0.67em;
-    margin-left: 0;
-    margin-right: 0;
-    font-weight: bold;
-    color: coral;
-    padding: 0 70px 0 30px;
-  }
-
 article {
-    display: flex;
+    display: grid;
+    grid-template:
+        "header header header"
+        "menu itens itens";
+
+    header {
+        grid-area: header;
+        padding: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .busca {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+
+            mat-form-field {
+                min-width: 20rem;
+            }
+        }
+    }
 
     .filters {
+        grid-area: menu;
         padding: 1rem;
     }
 
     .data {
+        grid-area: itens;
         flex: 1;
     }
+
 }
