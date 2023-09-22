@@ -15,6 +15,8 @@ import { ProdutcsFormDialogComponent } from '../../shared/produtcs-form-dialog/p
 import { SharedModule } from 'src/app/shared/shared.module';
 import { CoreModule } from 'src/app/core/core.module';
 import { Subscription } from 'rxjs';
+import { MatBadge, MatBadgeModule} from '@angular/material/badge';
+
 
 @Component({
   selector: 'app-products',
@@ -34,7 +36,9 @@ import { Subscription } from 'rxjs';
     NgIf,
     MatButtonModule,
     MatIconModule,
-    MatDividerModule
+    MatDividerModule,
+    MatBadgeModule,
+    MatIconModule,
   ],
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.scss'],
@@ -45,6 +49,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
   productsService: ProductsService = inject(ProductsService);
   dialog: MatDialog = inject(MatDialog);
   
+  itemCarrinho: number = 0;
   produtos: Product[] = [];
   produtosFiltrados: Product[] | undefined;
   itemName: string = '';
@@ -52,6 +57,8 @@ export class ProductsComponent implements OnInit, OnDestroy {
   searchPerformed: boolean = false;
 
   ngOnInit(): void {
+    console.log(this.itemCarrinho)
+
     this.subscriptions.add(
       this.productsService.getProducts().subscribe({
         next: (products) => {
@@ -90,6 +97,16 @@ export class ProductsComponent implements OnInit, OnDestroy {
     );
   }
 
+  onKey(event:any) {
+    const inputValue = event.target.value;
+    this.productsService.searchValue = inputValue;
+    this.subscriptions.add(
+      this.productsService.getProducts()
+        .subscribe({next: this.setProducts.bind(this)})
+    );
+    console.log(inputValue);
+  }
+
   private setProducts(products: Product[]): void {
     this.produtos = products;
     this.produtosFiltrados = this.productsService.filterProducts(products);
@@ -102,12 +119,13 @@ export class ProductsComponent implements OnInit, OnDestroy {
   //Abre Modal
   openDialog(produto:Product): void {
     const dialogRef = this.dialog.open(ProdutcsFormDialogComponent, {
-      width: '720px',
+      width: '520px',
       data: produto
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+      this.itemCarrinho =  Number(localStorage.getItem('itemCart'));
+      console.log(this.itemCarrinho);
     });
   }
 
