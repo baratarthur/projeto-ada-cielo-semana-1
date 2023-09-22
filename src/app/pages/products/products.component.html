@@ -1,35 +1,38 @@
-<div class="header">
-    <h1>City Market</h1>
-    <input [(ngModel)]="itemName" id="search-bar" type="text" placeholder="Search...">
-    <button (click)="inputValue()" id="search-button" type="button" mat-raised-button>Click Me!</button> 
-</div>
+<body>
+    <div class="header">
+        <h1>City Market</h1>
+        <input [(ngModel)]="itemName" id="search-bar" type="text" placeholder="Search...">
+        <button (click)="inputValue()" id="search-button" type="button" mat-raised-button>Click Me!</button> 
+        <button mat-fab color="disabled" id="dark-button" (click)="myFunction()">Dark</button>
+    </div>
 
-<div class="container">   
-    <ng-container *ngIf="!(produtos$ | async); else products">
-        <mat-spinner />
-    </ng-container>
-    <ng-template #products>
-        
-        <mat-card class="card" *ngFor="let produto of produtos$ | async" class="card">
-            <mat-card-header>
-                <mat-card-subtitle>{{produto.category}}</mat-card-subtitle>
-                <mat-card-title>{{produto.name}}</mat-card-title>
-            </mat-card-header>
-            <img mat-card-image [src]="produto.avatar" [alt]="produto.name" loading="lazy">
-            <mat-card-content>
-                <p>{{produto.description}}</p>
-                <p>{{produto.price | currency: 'BRL'}}</p>
-                <p>{{produto.rating}} stars</p>
-            </mat-card-content>
-        </mat-card>
-    </ng-template>
-</div>
-<div class="actions">
-    <button mat-raised-button
-        id="prev-button"
-        [disabled]="this.productsService.isFirstPage"
-        (click)="movePreviousPage()">
-        Prev
-    </button>
-    <button mat-raised-button (click)="moveNextPage()">Next</button>
-</div>
+    <div class="container">   
+        <ng-container *ngIf="!(produtos$ | async); else products">
+            <mat-spinner />
+        </ng-container>
+        <ng-template #products>
+            
+            <mat-card class="card" *ngFor="let produto of produtos$ | async" class="card">
+                <mat-card-header>
+                    <mat-card-subtitle>{{produto.category}}</mat-card-subtitle>
+                    <mat-card-title>{{produto.name}}</mat-card-title>
+                </mat-card-header>
+                <img mat-card-image [src]="produto.avatar" [alt]="produto.name" loading="lazy">
+                <mat-card-content>
+                    <p>{{produto.description}}</p>
+                    <p>{{produto.price | currency: 'BRL'}}</p>
+                    <p>{{produto.rating}} stars</p>
+                </mat-card-content>
+            </mat-card>
+        </ng-template>
+    </div>
+    <div class="actions">
+        <button mat-raised-button
+            id="prev-button"
+            [disabled]="this.productsService.isFirstPage"
+            (click)="movePreviousPage()">
+            Prev
+        </button>
+        <button mat-raised-button (click)="moveNextPage()">Next</button>
+    </div>
+</body>
