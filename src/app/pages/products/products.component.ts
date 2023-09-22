@@ -15,7 +15,7 @@ import { ProdutcsFormDialogComponent } from '../../shared/produtcs-form-dialog/p
 import { SharedModule } from 'src/app/shared/shared.module';
 import { CoreModule } from 'src/app/core/core.module';
 import { Subscription } from 'rxjs';
-import { MatBadge, MatBadgeModule} from '@angular/material/badge';
+import { MatBadgeModule } from '@angular/material/badge';
 
 
 @Component({
