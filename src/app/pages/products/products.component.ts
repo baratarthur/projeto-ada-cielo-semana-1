@@ -60,10 +60,8 @@ export class ProductsComponent {
     this.productsService.page.value = 1;
   }
 
-  myFunction(){
-    if (document.body.style.backgroundColor = "white"){
-      document.body.style.backgroundColor = "black";
-    }
+  clickTochangeTheme(){
+    this.productsService.changeTheme();
     this.productsService.page.value = 1;
   }
 }

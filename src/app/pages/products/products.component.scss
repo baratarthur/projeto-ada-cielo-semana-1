@@ -83,5 +83,37 @@ h1 {
   }
 
 #dark-button {
-    background-color: purple;
+    background-color: plum;
+    height: 70px;
+
 }
+
+// .container .name-card {
+//     color: white;
+// }
+
+.white-mode .name-card  {
+    color: white;
+}
+
+.white-mode .card-elements {
+    color: white;
+}
+
+.dark-mode .name-card {
+    color: black;
+}
+
+.dark-mode .card-elements {
+    color: black;
+}
+
+.dark-mode .header {
+    color: black;
+}
+
+.dark-mode body {
+    color: black;
+}
+
+

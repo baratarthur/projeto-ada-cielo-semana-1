@@ -45,4 +45,13 @@ export class ProductsService {
     }
   }
   
+  changeTheme(): any {    
+    let element = <HTMLElement> document.getElementsByClassName('white-mode')[0];
+    if(element){
+      element.className = "dark-mode";
+    } else {
+      let element = <HTMLElement> document.getElementsByClassName('dark-mode')[0];
+      element.className = "white-mode";
+    }
+  }
 }
