@@ -6,13 +6,17 @@ import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatSliderModule } from '@angular/material/slider';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { ProdutcsFormDialogComponent } from './produtcs-form-dialog/produtcs-form-dialog.component';
 
 @NgModule({
   declarations: [
     LateralMenuComponent,
+    ProdutcsFormDialogComponent
   ],
   exports: [
-    LateralMenuComponent
+    LateralMenuComponent,
+    ProdutcsFormDialogComponent
   ],
   imports: [
     CommonModule,
@@ -21,7 +25,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatListModule,
     MatCardModule,
     MatDividerModule,
-    MatSliderModule
+    MatSliderModule,
+    MatButtonModule,
   ],
 })
 export class SharedModule { }

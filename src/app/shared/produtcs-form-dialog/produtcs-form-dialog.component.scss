@@ -1,3 +1,15 @@
-.teste{
-    background-color: #6a1616;
+.button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.modal-body {
+    display: flex;
+    gap: 1rem;
+}
+
+.modal {
+    padding: 1rem;
 }

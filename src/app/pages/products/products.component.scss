@@ -58,6 +58,10 @@ article {
                 min-width: 20rem;
             }
         }
+
+        .carrinho mat-icon {
+            transform: scale(2.0);
+        }
     }
 
     .filters {

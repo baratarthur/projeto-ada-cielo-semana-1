@@ -24,8 +24,8 @@ export class ProductsService {
  
   url: string = 'http://localhost:3000/products';
   page: Page = new Page();
-
   searchValue: string = '';
+
   categories: Category[] = [];
   selectedCategories: Category[] = [];
   ratings: Rating[] = [0, 1, 2, 3, 4, 5];

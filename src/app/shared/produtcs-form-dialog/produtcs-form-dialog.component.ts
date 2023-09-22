@@ -12,8 +12,18 @@ export class ProdutcsFormDialogComponent {
     public dialogRef: MatDialogRef<ProdutcsFormDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Product) {}
     
-
+  itemCartAddRemove = localStorage.getItem('itemCart');
+  
   cancel(): void {
+    let saveItemCard = Number(this.itemCartAddRemove) - 1;
+    localStorage.setItem('itemCart',saveItemCard.toString());
+    
+    this.dialogRef.close();
+  }
+
+  addToCart(){
+    let saveItemCard = Number(this.itemCartAddRemove) + 1;
+    localStorage.setItem('itemCart',saveItemCard.toString());
     this.dialogRef.close();
   }
 

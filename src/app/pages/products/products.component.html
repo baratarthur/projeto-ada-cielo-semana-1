@@ -18,7 +18,11 @@
                 search
             </button> 
         </div>
-        <div class="carrinho"></div>
+        <div class="carrinho">
+            <div [matBadge]="itemCarrinho" class="demo-section">
+                <mat-icon>shopping_cart</mat-icon>
+            </div>
+        </div>
     </header>
     <section class="filters">
         <app-lateral-menu (onFilter)="filterProducts()"/>
