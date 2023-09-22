@@ -38,7 +38,6 @@ import { MatBadgeModule } from '@angular/material/badge';
     MatIconModule,
     MatDividerModule,
     MatBadgeModule,
-    MatIconModule,
   ],
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.scss'],
@@ -57,8 +56,6 @@ export class ProductsComponent implements OnInit, OnDestroy {
   searchPerformed: boolean = false;
 
   ngOnInit(): void {
-    console.log(this.itemCarrinho)
-
     this.subscriptions.add(
       this.productsService.getProducts().subscribe({
         next: (products) => {
@@ -104,7 +101,6 @@ export class ProductsComponent implements OnInit, OnDestroy {
       this.productsService.getProducts()
         .subscribe({next: this.setProducts.bind(this)})
     );
-    console.log(inputValue);
   }
 
   private setProducts(products: Product[]): void {

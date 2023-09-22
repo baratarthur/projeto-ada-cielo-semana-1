@@ -1,17 +1,21 @@
 <div class="modal">
-  <h1 mat-dialog-title class="colorModal">{{data.name}}</h1>
-  <div mat-dialog-content style="float: left;">
-    <img mat-card-image [src]="data.avatar" [alt]="data.name" loading="lazy" width="210px" style="float: left;">
-  </div>
-    <div style="padding-bottom: 10px;">
-      <p class="colorModal">{{data.description}}</p>
-      <p class="colorModal">{{data.price}}</p>
-      <p class="colorModal">{{data.rating}}</p>
-      <p class="colorModal">{{data.category}}</p>
+  <h3 mat-dialog-subtitle class="mat-h3">{{data.category}}</h3>
+  <h1 mat-dialog-title class="mat-h1">{{data.name}}</h1>
+  <div class="modal-body" mat-dialog-content>
+    <img mat-card-image [src]="data.avatar" [alt]="data.name" loading="lazy" width="210px">
+    <div>
+      <p class="mat-body">{{data.description}}</p>
+      <p class="mat-body">{{data.price | currency: 'BRL'}}</p>
+      <p class="mat-body">{{data.rating}} stars</p>
       <div class="button">
-        <button class="form-button" (click)="cancel()">Remover<br> Produto</button>
-        <button class="form-button" (click)="addToCart()">Adicionar <br>Produto</button>
+        <button mat-raised-button color="warn" (click)="cancel()">
+          Remover Produto
+        </button>
+        <button mat-raised-button color="primary" (click)="addToCart()">
+          Adicionar Produto
+        </button>
       </div>
     </div>
   </div>
+</div>
 
