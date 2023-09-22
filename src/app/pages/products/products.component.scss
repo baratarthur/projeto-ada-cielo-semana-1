@@ -36,30 +36,42 @@ mat-card-content, mat-card-header {
     gap: 1rem;
 }
 
-#search-bar {
-    padding: 6px;
-    width: 300px;
-    font: inherit;
-    float: center;
-    text-align:center;
-    display: flex;
-    margin:auto;
+article {
+    display: grid;
+    grid-template:
+        "header header header"
+        "menu itens itens";
+
+    header {
+        grid-area: header;
+        padding: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .busca {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+
+            mat-form-field {
+                min-width: 20rem;
+            }
+        }
+
+        .carrinho mat-icon {
+            transform: scale(2.0);
+        }
+    }
+
+    .filters {
+        grid-area: menu;
+        padding: 1rem;
+    }
+
+    .data {
+        grid-area: itens;
+        flex: 1;
+    }
 
 }
-
-header {
-    display: flex;
-    font-family: sans-serif;
-    padding-top: 23px;
-}
-
-.matBadgeCart{
-    margin-top: 30px;
-}
-
-#mat-badge-content-0{
-    right: 4px;
-    top: 10px;
-}
-
-

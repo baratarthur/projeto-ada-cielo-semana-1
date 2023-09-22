@@ -1,27 +1,15 @@
-.form-button {
-    margin-top: 3px !important;
-    border-radius: 5px;
-    background-color: #b0d7e3;
-    border: none;
-    font-family: cursive;
-    color: #244d76;
-    padding: 5px 10px;
-    margin-right: 13px;
-    border-bottom: outset;
-    font-size: 12px;
+.button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
 }
 
-.button {
-    text-align: center;
-    width: 256px;
+.modal-body {
+    display: flex;
+    gap: 1rem;
 }
 
 .modal {
-    background-color: aliceblue;
-    width: 500px;
-    margin: 10px 10px 10px 10px;
-}
-
-.colorModal {
-    color: darkcyan;
+    padding: 1rem;
 }

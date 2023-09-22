@@ -1,32 +1,67 @@
-<header>
-    <div [matBadge]="itemCarrinho" matBadgeSize="large" class="demo-section">
-        <img src="/assets/carrinho.jpg" width="70px;" alt="carrinho de Compras"/>
-    </div>
-</header>
-<div class="container">
-    <ng-container *ngIf="!(produtos$ | async); else products">
-        <mat-spinner />
-    </ng-container>
-    <ng-template #products>
-        <mat-card class="card" *ngFor="let produto of produtos$ | async" class="card">
-            <mat-card-header>
-                <mat-card-subtitle>{{produto.category}}</mat-card-subtitle>
-                <mat-card-title>{{produto.name}}</mat-card-title>
-            </mat-card-header>
-            <img mat-card-image [src]="produto.avatar" [alt]="produto.name" loading="lazy"
-                (click)="openDialog(produto)">
-            <mat-card-content>
-                <p>{{produto.description}}</p>
-                <p>{{produto.price | currency: 'BRL'}}</p>
-                <p>{{produto.rating}} stars</p>
-            </mat-card-content>
-        </mat-card>
-    </ng-template>
-</div>
-<div class="actions">
-    <button mat-raised-button id="prev-button" [disabled]="this.productsService.isFirstPage"
-        (click)="movePreviousPage()">
-        Prev
-    </button>
-    <button mat-raised-button (click)="moveNextPage()">Next</button>
-</div>
+<article>
+    <header>
+        <h1 class="mat-h1">City Market</h1>
+        <div class="busca">
+            <mat-form-field class="search">
+                <mat-label>Search...</mat-label>
+                <input matInput
+                    id="search-bar"
+                    type="text"
+                    [(ngModel)]="itemName">
+            </mat-form-field>
+            
+            <button mat-raised-button
+                id="search-button"
+                type="button"
+                color="primary"
+                (click)="inputValue()">
+                search
+            </button> 
+        </div>
+        <div class="carrinho">
+            <div [matBadge]="itemCarrinho" class="demo-section">
+                <mat-icon>shopping_cart</mat-icon>
+            </div>
+        </div>
+    </header>
+    <section class="filters">
+        <app-lateral-menu (onFilter)="filterProducts()"/>
+    </section>
+    <section class="data">
+        <div class="container">
+            <ng-container *ngIf="!produtos.length; else products">
+                <mat-spinner />
+            </ng-container>
+            <ng-template #products>
+                <mat-card *ngFor="let produto of (produtosFiltrados?? produtos)"
+                    (click)="openDialog(produto)"
+                    class="card">
+                    <mat-card-header>
+                        <mat-card-subtitle>{{produto.category}}</mat-card-subtitle>
+                        <mat-card-title>{{produto.name}}</mat-card-title>
+                    </mat-card-header>
+                    <img mat-card-image [src]="produto.avatar" [alt]="produto.name" loading="lazy">
+                    <mat-card-content>
+                        <p class="mat-body">{{produto.description}}</p>
+                        <p class="mat-body">{{produto.price | currency: 'BRL'}}</p>
+                        <p class="mat-body">{{produto.rating}} stars</p>
+                    </mat-card-content>
+                </mat-card>
+            </ng-template>
+        </div>
+        <div class="actions">
+            <button mat-raised-button
+                id="prev-button"
+                color="primary"
+                [disabled]="productsService.isFirstPage"
+                (click)="movePreviousPage()">
+                Prev
+            </button>
+            <button mat-raised-button
+                color="primary"
+                (click)="moveNextPage()">
+                Next
+            </button>
+        </div>
+    </section>
+</article>
