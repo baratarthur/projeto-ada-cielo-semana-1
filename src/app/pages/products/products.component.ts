@@ -6,7 +6,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { Product, ProductsService } from 'src/app/core/services/products.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ProdutcsFormDialogComponent } from '../../shared/produtcs-form-dialog/produtcs-form-dialog.component';
-import {MatBadge, MatBadgeModule} from '@angular/material/badge';
+import { MatBadgeModule} from '@angular/material/badge';
 import {MatIconModule} from '@angular/material/icon';
 
 

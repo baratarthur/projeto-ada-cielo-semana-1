@@ -1,19 +1,17 @@
-<div style="background-color: aliceblue; width: 500px; margin:10px 10px 10px 10px;">
-  <h1 mat-dialog-title style="color: darkcyan;">{{data.name}}</h1>
+<div class="modal">
+  <h1 mat-dialog-title class="colorModal">{{data.name}}</h1>
   <div mat-dialog-content style="float: left;">
     <img mat-card-image [src]="data.avatar" [alt]="data.name" loading="lazy" width="210px" style="float: left;">
   </div>
     <div style="padding-bottom: 10px;">
-      <p style="color: darkcyan;">{{data.description}}</p>
-      <p style="color: darkcyan;">{{data.price}}</p>
-      <p style="color: darkcyan;">{{data.rating}}</p>
-      <p style="color: darkcyan;">{{data.category}}</p>
+      <p class="colorModal">{{data.description}}</p>
+      <p class="colorModal">{{data.price}}</p>
+      <p class="colorModal">{{data.rating}}</p>
+      <p class="colorModal">{{data.category}}</p>
       <div class="button">
         <button class="form-button" (click)="cancel()">Remover<br> Produto</button>
         <button class="form-button" (click)="addToCart()">Adicionar <br>Produto</button>
       </div>
     </div>
   </div>
-<script>
-  
-</script>
+
