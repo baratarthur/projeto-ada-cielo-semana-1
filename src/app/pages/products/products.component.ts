@@ -10,6 +10,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ProductsService } from 'src/app/core/services/products.service';
 import { FormsModule }   from '@angular/forms';
 import {MatDividerModule} from '@angular/material/divider';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 @Component({
   selector: 'app-products',
@@ -26,7 +27,8 @@ import {MatDividerModule} from '@angular/material/divider';
     NgIf,
     MatButtonModule,
     MatIconModule,
-    MatDividerModule
+    MatDividerModule,
+    MatSlideToggleModule
   ],
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.scss'],

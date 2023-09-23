@@ -4,7 +4,7 @@
             <h1>City Market</h1>
             <input [(ngModel)]="itemName" id="search-bar" type="text" placeholder="Search...">
             <button (click)="inputValue()" id="search-button" type="button" mat-raised-button>Click Me!</button> 
-            <button mat-fab color="disabled" id="dark-button" (click)="clickTochangeTheme()">Dark/Light</button>
+            <mat-slide-toggle (change)="clickTochangeTheme()"> </mat-slide-toggle>
         </div>
 
         <div class="container">   
