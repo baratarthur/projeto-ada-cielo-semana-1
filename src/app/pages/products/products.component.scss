@@ -88,10 +88,6 @@ h1 {
 
 }
 
-// .container .name-card {
-//     color: white;
-// }
-
 .white-mode .name-card  {
     color: white;
 }
@@ -100,20 +96,22 @@ h1 {
     color: white;
 }
 
+.white-mode .top-div {
+    background-color: white;
+}
+
 .dark-mode .name-card {
-    color: black;
+    color: white;
 }
 
 .dark-mode .card-elements {
-    color: black;
+    color: white;
 }
 
-.dark-mode .header {
-    color: black;
+.dark-mode .card {
+    background-color: black;
 }
 
-.dark-mode body {
-    color: black;
+.dark-mode .top-div {
+    background-color: black;
 }
-
-
